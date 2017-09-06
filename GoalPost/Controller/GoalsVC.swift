@@ -18,6 +18,7 @@ class GoalsVC: UIViewController {
     }
 
     @IBAction func addGoalBtnPressed(_ sender: Any) {
+        tableView.isHidden = false
     }
     
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45EBB6161F602CDB00D79A1D /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EBB6151F602CDB00D79A1D /* GoalCell.swift */; };
 		45ED97F61F601CCD00A0F592 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED97F51F601CCD00A0F592 /* AppDelegate.swift */; };
 		45ED97F81F601CCD00A0F592 /* GoalsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ED97F71F601CCD00A0F592 /* GoalsVC.swift */; };
 		45ED97FB1F601CCD00A0F592 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45ED97F91F601CCD00A0F592 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		45EBB6151F602CDB00D79A1D /* GoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
 		45ED97F21F601CCD00A0F592 /* GoalPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45ED97F51F601CCD00A0F592 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45ED97F71F601CCD00A0F592 /* GoalsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsVC.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		45ED980B1F601CF500A0F592 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				45EBB6151F602CDB00D79A1D /* GoalCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45EBB6161F602CDB00D79A1D /* GoalCell.swift in Sources */,
 				45ED97F81F601CCD00A0F592 /* GoalsVC.swift in Sources */,
 				45ED97F61F601CCD00A0F592 /* AppDelegate.swift in Sources */,
 				45ED97FE1F601CCD00A0F592 /* GoalPost.xcdatamodeld in Sources */,
