@@ -25,7 +25,7 @@
         <!--GoalsVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="GoalsVC" customModule="GoalPost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GoalsVC" id="BYZ-38-t0r" customClass="GoalsVC" customModule="GoalPost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,7 +55,6 @@
                                         <state key="normal" image="addGoal"/>
                                         <connections>
                                             <action selector="addGoalBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rQf-mK-sri"/>
-                                            <segue destination="8HM-2j-UA7" kind="presentation" id="tmP-hy-5AV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -85,7 +84,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SRw-nW-Ef6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SRw-nW-Ef6">
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -193,7 +192,7 @@
         <!--Create GoalVC-->
         <scene sceneID="v8F-cN-THy">
             <objects>
-                <viewController id="8HM-2j-UA7" customClass="CreateGoalVC" customModule="GoalPost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateGoalVC" id="8HM-2j-UA7" customClass="CreateGoalVC" customModule="GoalPost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="jy4-yd-m4r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -236,27 +235,44 @@
                                     <constraint firstItem="Dmh-UL-2ke" firstAttribute="leading" secondItem="Vre-F9-3Zj" secondAttribute="leading" constant="15" id="fOe-EF-lsX"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4Z8-h5-FCQ">
-                                <rect key="frame" x="16" y="78" width="343" height="319"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5s6-U0-iLm">
+                                <rect key="frame" x="0.0" y="631" width="375" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="4ul-4h-AY6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="NEXT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextBtnPressed:" destination="8HM-2j-UA7" eventType="touchUpInside" id="cac-Cr-j08"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4Z8-h5-FCQ">
+                                <rect key="frame" x="16" y="78" width="343" height="260"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What is your goal?" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8ZF-fj-ywF">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="254"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose one" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fer-J4-BxU">
-                                        <rect key="frame" x="0.0" y="262" width="343" height="20"/>
+                                        <rect key="frame" x="0.0" y="200" width="343" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="yOY-6D-9y8"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vW1-nE-kAu">
-                                        <rect key="frame" x="0.0" y="290" width="343" height="29"/>
+                                        <rect key="frame" x="0.0" y="230" width="343" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ZE-8D-XKX">
-                                                <rect key="frame" x="0.0" y="0.0" width="166.5" height="29"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="166.5" height="30"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                 <state key="normal" title="SHORT TERM">
@@ -266,8 +282,8 @@
                                                     <action selector="shortTermBtnPressed:" destination="8HM-2j-UA7" eventType="touchUpInside" id="uM7-SM-ecz"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7On-Fo-loy">
-                                                <rect key="frame" x="176.5" y="0.0" width="166.5" height="29"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7On-Fo-loy">
+                                                <rect key="frame" x="176.5" y="0.0" width="166.5" height="30"/>
                                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                 <state key="normal" title="LONG TERM">
@@ -278,32 +294,26 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="8C6-yT-xLx"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="260" id="c35-x8-Q57"/>
+                                </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5s6-U0-iLm">
-                                <rect key="frame" x="16" y="619" width="343" height="36"/>
-                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                <state key="normal" title="NEXT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextBtnPressed:" destination="8HM-2j-UA7" eventType="touchUpInside" id="cac-Cr-j08"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5s6-U0-iLm" firstAttribute="leading" secondItem="S1U-YV-N6T" secondAttribute="leading" constant="16" id="Hng-q9-mu9"/>
+                            <constraint firstItem="5s6-U0-iLm" firstAttribute="leading" secondItem="S1U-YV-N6T" secondAttribute="leading" id="Hng-q9-mu9"/>
                             <constraint firstItem="Vre-F9-3Zj" firstAttribute="trailing" secondItem="S1U-YV-N6T" secondAttribute="trailing" id="I8o-da-WLz"/>
                             <constraint firstItem="Vre-F9-3Zj" firstAttribute="leading" secondItem="S1U-YV-N6T" secondAttribute="leading" id="Vi4-Pi-tTY"/>
                             <constraint firstItem="S1U-YV-N6T" firstAttribute="trailing" secondItem="4Z8-h5-FCQ" secondAttribute="trailing" constant="16" id="cIo-33-bNU"/>
                             <constraint firstItem="4Z8-h5-FCQ" firstAttribute="leading" secondItem="S1U-YV-N6T" secondAttribute="leading" constant="16" id="eBQ-Mx-dYa"/>
-                            <constraint firstItem="S1U-YV-N6T" firstAttribute="bottom" secondItem="5s6-U0-iLm" secondAttribute="bottom" constant="12" id="jwr-ZN-g2v"/>
-                            <constraint firstItem="5s6-U0-iLm" firstAttribute="top" secondItem="vW1-nE-kAu" secondAttribute="bottom" constant="222" id="kmZ-2H-7fy"/>
+                            <constraint firstItem="5s6-U0-iLm" firstAttribute="bottom" secondItem="S1U-YV-N6T" secondAttribute="bottom" id="jwr-ZN-g2v"/>
                             <constraint firstItem="Vre-F9-3Zj" firstAttribute="top" secondItem="jy4-yd-m4r" secondAttribute="top" id="oad-4B-ZZA"/>
-                            <constraint firstItem="S1U-YV-N6T" firstAttribute="trailing" secondItem="5s6-U0-iLm" secondAttribute="trailing" constant="16" id="srP-87-CZW"/>
+                            <constraint firstItem="5s6-U0-iLm" firstAttribute="trailing" secondItem="S1U-YV-N6T" secondAttribute="trailing" id="srP-87-CZW"/>
                             <constraint firstItem="4Z8-h5-FCQ" firstAttribute="top" secondItem="Vre-F9-3Zj" secondAttribute="bottom" constant="8" id="ybY-dN-LQf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S1U-YV-N6T"/>
