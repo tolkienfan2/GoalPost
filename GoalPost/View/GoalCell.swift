@@ -15,10 +15,10 @@ class GoalCell: UITableViewCell {
     @IBOutlet weak var progressLbl: UILabel!
     
     
-    func configureCell(goal: String, type: GoalType, progress: Int) {
-        self.goalLbl.text = goal
-        self.typeLbl.text = type.rawValue
-        self.progressLbl.text = String(describing: progress)
+    func configureCell(goal: Goal) {
+        self.goalLbl.text = goal.goal
+        self.typeLbl.text = goal.type
+        self.progressLbl.text = String(goal.progress)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
