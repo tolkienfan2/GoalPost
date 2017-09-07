@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import CoreData
+
+let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
 class GoalsVC: UIViewController {
 
@@ -24,7 +27,6 @@ class GoalsVC: UIViewController {
         guard let createGoalVC = storyboard?.instantiateViewController(withIdentifier: CREATE_GOAL_VC) else { return }
         presentDetail(createGoalVC)
     }
-    
 }
 
 extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
