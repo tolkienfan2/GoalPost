@@ -27,6 +27,11 @@ class GoalsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        fetchCoreData()
+        tableView.reloadData()
+    }
+    
+    func fetchCoreData() {
         self.fetch { (complete) in
             if complete {
                 if goals.count >= 1 {
@@ -36,7 +41,6 @@ class GoalsVC: UIViewController {
                 }
             }
         }
-        tableView.reloadData()
     }
 
     @IBAction func addGoalBtnPressed(_ sender: Any) {
@@ -61,6 +65,31 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
         cell.configureCell(goal: goal)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
+            self.removeGoal(atIndexPath: indexPath)
+            self.fetchCoreData()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+        let addAction = UITableViewRowAction(style: .normal, title: "ADD 1") { (rowAction, indexPath) in
+            self.setProgress(atIndexPath: indexPath)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        
+        deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        addAction.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        return [deleteAction, addAction]
+    }
 }
 
 extension GoalsVC {
@@ -76,6 +105,38 @@ extension GoalsVC {
         } catch {
             debugPrint("Could not fetch: \(error.localizedDescription)")
             completion(false)
+        }
+    }
+    
+    func setProgress(atIndexPath indexPath: IndexPath) {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        
+        let chosenGoal = goals[indexPath.row]
+        
+        if chosenGoal.progress < chosenGoal.target {
+            chosenGoal.progress = chosenGoal.progress + 1
+        } else {
+            return
+        }
+        
+        do {
+            try managedContext.save()
+            print("Successfully set progress")
+        } catch {
+            debugPrint("Could not set progress: \(error.localizedDescription)")
+        }
+    }
+    
+    func removeGoal(atIndexPath indexPath: IndexPath) {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        
+        managedContext.delete(goals[indexPath.row])
+        
+        do {
+            try managedContext.save()
+            print("Successfully removed goal")
+        } catch {
+            debugPrint("Could not remove: \(error.localizedDescription)")
         }
     }
 }
