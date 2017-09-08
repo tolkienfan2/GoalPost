@@ -14,6 +14,7 @@ let appDelegate = UIApplication.shared.delegate as? AppDelegate
 class GoalsVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var undoView: UIView!
     
     var goals: [Goal] = []
     
@@ -42,7 +43,15 @@ class GoalsVC: UIViewController {
             }
         }
     }
-
+    
+    @IBAction func undoBtnPressed(_ sender: AnyObject?) {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
+        managedContext.undoManager?.undo()
+        undoView.isHidden = true
+        fetchCoreData()
+        tableView.reloadData()
+    }
+    
     @IBAction func addGoalBtnPressed(_ sender: Any) {
         guard let createGoalVC = storyboard?.instantiateViewController(withIdentifier: CREATE_GOAL_VC) else { return }
         presentDetail(createGoalVC)
@@ -75,6 +84,7 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
         let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
             self.removeGoal(atIndexPath: indexPath)
             self.fetchCoreData()
@@ -86,7 +96,7 @@ extension GoalsVC: UITableViewDelegate, UITableViewDataSource {
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
         
-        deleteAction.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        deleteAction.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
         addAction.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         return [deleteAction, addAction]
     }
@@ -129,11 +139,12 @@ extension GoalsVC {
     
     func removeGoal(atIndexPath indexPath: IndexPath) {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
-        
+        managedContext.undoManager = UndoManager()
         managedContext.delete(goals[indexPath.row])
         
         do {
             try managedContext.save()
+            undoView.isHidden = false
             print("Successfully removed goal")
         } catch {
             debugPrint("Could not remove: \(error.localizedDescription)")

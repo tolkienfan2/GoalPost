@@ -191,15 +191,49 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3HY-AL-0Yi" userLabel="UndoView">
+                                <rect key="frame" x="0.0" y="597" width="375" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOAL REMOVED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdF-bK-hh7">
+                                        <rect key="frame" x="25" y="25" width="188.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXz-OE-O4e">
+                                        <rect key="frame" x="292" y="15.5" width="73" height="39"/>
+                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="22"/>
+                                        <state key="normal" title=" UNDO? ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="undoBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XVZ-1p-rpS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="nXz-OE-O4e" secondAttribute="trailing" constant="10" id="5uJ-PH-oSG"/>
+                                    <constraint firstAttribute="height" constant="70" id="RNk-kC-Zv4"/>
+                                    <constraint firstItem="jdF-bK-hh7" firstAttribute="leading" secondItem="3HY-AL-0Yi" secondAttribute="leading" constant="25" id="ery-vD-Cqz"/>
+                                    <constraint firstItem="nXz-OE-O4e" firstAttribute="centerY" secondItem="3HY-AL-0Yi" secondAttribute="centerY" id="gD7-Uh-nJ2"/>
+                                    <constraint firstItem="jdF-bK-hh7" firstAttribute="top" secondItem="3HY-AL-0Yi" secondAttribute="top" constant="25" id="gvV-dJ-vF5"/>
+                                    <constraint firstAttribute="bottom" secondItem="jdF-bK-hh7" secondAttribute="bottom" constant="25" id="jJc-cR-Pdg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="f9y-bX-AhR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="37l-xn-fLT"/>
                             <constraint firstItem="fPN-dV-Sh8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IoG-ow-d37"/>
                             <constraint firstItem="SRw-nW-Ef6" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="MXr-bD-Ocu"/>
+                            <constraint firstItem="3HY-AL-0Yi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UNh-Pn-51v"/>
                             <constraint firstItem="SRw-nW-Ef6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Uhl-lK-4eG"/>
                             <constraint firstItem="f9y-bX-AhR" firstAttribute="top" secondItem="fPN-dV-Sh8" secondAttribute="bottom" constant="75" id="Ve4-dk-l5p"/>
                             <constraint firstItem="fPN-dV-Sh8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cBW-2C-DoJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3HY-AL-0Yi" secondAttribute="trailing" id="cPs-IR-6PC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3HY-AL-0Yi" secondAttribute="bottom" id="hii-sD-xxg"/>
                             <constraint firstItem="SRw-nW-Ef6" firstAttribute="top" secondItem="fPN-dV-Sh8" secondAttribute="bottom" id="nLy-Pr-0T2"/>
                             <constraint firstItem="SRw-nW-Ef6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vlj-8N-I6l"/>
                             <constraint firstItem="fPN-dV-Sh8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xGG-sy-WwK"/>
@@ -208,6 +242,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="SRw-nW-Ef6" id="509-fn-pYY"/>
+                        <outlet property="undoView" destination="3HY-AL-0Yi" id="bo3-bO-5zg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
